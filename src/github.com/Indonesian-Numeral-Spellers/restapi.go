@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"github.com/gorilla/mux"
 	"net/http"
 	"log"
@@ -60,8 +59,11 @@ func convstring(x string) int {
 		return 8
 	} else if(x == "sembilan"){
 		return 9
-	} 
-	return 1
+	} else if (x =="nol"){
+		return 0
+	} else{
+		return -1
+	}
 }
 
 func threedigit(x,y,z int ) string{
@@ -110,10 +112,25 @@ func threedigit4(x,y,z int ) string{
 	return ""
 }
 
+func checkDigit(x string) bool{
+	i := 0
+	for i<len(x){
+		if !(x[i]>='0' && x[i]<='9'){
+			return false
+		}
+		i += 1
+	}
+	return true
+}
 func spell(w http.ResponseWriter, r *http.Request){ // menangani GET Request
 	w.Header().Set("Content-Type","application/json")
 	keys,_ := r.URL.Query()["number"]
 	var s string = string(keys[0])
+	if(!checkDigit(s)){
+		angka := Text{Text: "invalid number"}
+    	json.NewEncoder(w).Encode(angka)
+    	return
+	}
 	var a [12]int
 	i := 0
 	for i<len(s){
@@ -133,6 +150,7 @@ func spell(w http.ResponseWriter, r *http.Request){ // menangani GET Request
 
 func read(w http.ResponseWriter, r *http.Request){ // menangani POST Request
 	w.Header().Set("Content-Type","application/json")
+
     var lines Text
     json.NewDecoder(r.Body).Decode(&lines)
     line := lines.Text
@@ -181,12 +199,16 @@ func read(w http.ResponseWriter, r *http.Request){ // menangani POST Request
 	    	c = 0
 	    } else {
 	    	c = convstring(kalimat[i])
+	    	if(c == -1){
+			    angka := Number{Number: "Invalid input"}
+			    json.NewEncoder(w).Encode(angka)
+			    return
+	    	}
 	    }
 	    i += 1
     }
     total += (x+y+c)
     angka := Number{Number: strconv.Itoa(total)}
-    fmt.Print(angka)
     json.NewEncoder(w).Encode(angka)
 }
 
