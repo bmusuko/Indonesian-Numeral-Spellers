@@ -1,0 +1,22 @@
+{
+  "name": "dis",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "ws": "3.3.2"
+  },
+  "dependencies": {
+    "axios": "^0.18.0",
+    "document": "^0.4.7",
+    "dom-document": "^1.1.0",
+    "express": "^4.16.4",
+    "querystring": "^0.2.0",
+    "window": "^4.2.6"
+  }
+}

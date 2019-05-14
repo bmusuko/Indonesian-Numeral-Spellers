@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Indonesian Number Speller</title>
+    <link rel="icon" href="data:,">
+    <style>
+      h5 {
+        color: maroon;
+        text-align: center;
+        margin-top: -20px;
+        }
+        .formSpell {
+          margin: 0 auto;
+          width: 400px;
+          padding: 1em;
+          border: 5px solid #CCC;
+          border-radius: 1em;
+          border-color: maroon;
+        } 
+        body {
+          background-color: pink;
+        }
+        .title{
+          text-align: center;
+        }
+        .formRead{
+          margin: 0 auto;
+          width: 400px;
+          padding: 1em;
+          border: 5px solid #CCC;
+          border-radius: 1em;
+          border-color: maroon;
+        }
+    </style>
+  </head>
+  <body>
+    <div className ="Indonesian Number Speller">
+    <h1 class ="title">Welcome to Indonesian Number Speller</h1>
+    <h5>By :Bram Musuko</h5>
+    <br></br>
+      <form action="/spell/" method="get" class=formSpell>
+          <label for="spell">Let me spell your number</label>    
+          <input type="text" id="spell" name="spell" required></input>
+          <button id="spellButton" type="submit">Spell</button>
+      </form>
+      <br></br>
+      <br></br>
+      <br></br>
+      <form action="/read/" method="post" class=formRead>
+          <label for="read">Let me read your number</label>
+          <input type="text" id="read" name="read" required></input>
+          <button id="readButton" type="submit">read</button>
+      </form>
+    </div>
+    <br></br>
+    <br></br>
+    <br></br>
+    <div>
+      <h3>Tutorial</h3>
+      </ul>
+        <li>masukkan angka dalam jika ingin menggunakan fitur spell, contoh : "123"</li>
+        <li>masukkan angka dalam bentuk kalimat jika ingin menggunakan fitur read, contoh : "seratus dua puluh tiga" </li>
+      </ul>
+    </div>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  </body>
+</html>
