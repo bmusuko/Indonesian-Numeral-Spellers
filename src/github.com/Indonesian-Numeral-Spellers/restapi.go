@@ -110,7 +110,7 @@ func threedigit4(x,y,z int ) string{
 	return ""
 }
 
-func spell(w http.ResponseWriter, r *http.Request){
+func spell(w http.ResponseWriter, r *http.Request){ // menangani GET Request
 	w.Header().Set("Content-Type","application/json")
 	keys,_ := r.URL.Query()["number"]
 	var s string = string(keys[0])
@@ -131,11 +131,8 @@ func spell(w http.ResponseWriter, r *http.Request){
     json.NewEncoder(w).Encode(angka)
 }
 
-func read(w http.ResponseWriter, r *http.Request){
+func read(w http.ResponseWriter, r *http.Request){ // menangani POST Request
 	w.Header().Set("Content-Type","application/json")
-/*    scanner := bufio.NewScanner(os.Stdin)
-    scanner.Scan() 
-    line := scanner.Text()*/
     var lines Text
     json.NewDecoder(r.Body).Decode(&lines)
     line := lines.Text
@@ -143,8 +140,8 @@ func read(w http.ResponseWriter, r *http.Request){
     l := len(kalimat)
     i := 0
     total := 0
-    x := 0 // save ratus
-    y := 0 // save puluh
+    x := 0 // save ratusan
+    y := 0 // save puluhan
     c := 0 // angka sebelum
     for i<l{
 	    if(kalimat[i] == "sepuluh"){
