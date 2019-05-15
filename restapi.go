@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"github.com/gorilla/mux"
 	"net/http"
 	"log"
@@ -216,5 +217,6 @@ func main() {
 	r := mux.NewRouter()
     r.HandleFunc("/spell",spell).Methods("GET")
     r.HandleFunc("/read",read).Methods("POST")
+    fmt.Print("server is running in 8081\n")
     log.Fatal(http.ListenAndServe(":8081",r))
 }

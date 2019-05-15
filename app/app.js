@@ -80,4 +80,4 @@ var server = http.createServer(function(req,res){
 
 
 server.listen(3008,"127.0.0.1");
-console.log("server is running");
+console.log("server is running in 3008");
